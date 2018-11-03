@@ -28,6 +28,7 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="walls" type="TileMap" parent="." index="1"]
 
+position = Vector2( 1.67017, 0 )
 mode = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 128, 64 )
