@@ -3,6 +3,7 @@ const ItemClass = preload("Item.gd");
 const ItemSlotClass = preload("res://ItemSlot.gd");
 
 const slotTexture = preload("res://images/skil.png");
+
 const itemImages = [
 	preload("res://images/Ac_Ring05.png"),
 	preload("res://images/A_Armor05.png"),
