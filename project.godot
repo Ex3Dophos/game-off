@@ -11,8 +11,12 @@ config_version=3
 [application]
 
 config/name="Isometric Game"
-run/main_scene="res://main-screen.tscn"
+run/main_scene="res://MainScreen.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+Network="*res://Network.gd"
 
 [gdnative]
 
