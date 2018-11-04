@@ -11,6 +11,8 @@ slave var slave_position = Vector2()
 slave var slave_movement = MoveDirection.NONE
 
 var destination = get_position()
+var inventory = null
+
 
 
 func init(nickname, start_position, is_slave):
@@ -19,7 +21,18 @@ func init(nickname, start_position, is_slave):
 	#global_position = start_position
 	if is_slave:
 		$Sprite.texture = load('res://troll2.png')
+	else:
+		inventory = preload('res://Inventory.tscn').instance()
 
+
+func _input(event):
+	if is_network_master():
+		if Input.is_key_pressed(KEY_W):
+			if has_node("PlayerInventory"):
+				remove_child(inventory)	
+			else:
+				add_child(inventory)
+			
 
 func _physics_process(delta):
 

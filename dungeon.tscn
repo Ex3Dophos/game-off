@@ -2,7 +2,7 @@
 
 [ext_resource path="res://tileset.tres" type="TileSet" id=1]
 
-[node name="dungeon" type="Node2D" index="0"]
+[node name="dungeon" type="Node2D"]
 
 [node name="floor" type="TileMap" parent="." index="0"]
 
@@ -27,6 +27,7 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="walls" type="TileMap" parent="." index="1"]
 
+position = Vector2( 1.67017, 0 )
 mode = 1
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 128, 64 )
