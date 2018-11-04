@@ -17,18 +17,43 @@ const itemImages = [
 const itemDictionary = {
 	0: {
 		"itemName": "Ring",
-		"itemValue": 456,
+		"itemValue": 100,
 		"itemIcon": itemImages[0]
 	},
 	1: {
 		"itemName": "Sword",
-		"itemValue": 100,
+		"itemValue": 350,
 		"itemIcon": itemImages[7]
 	},
 	2: {
-		"itemName": "Iron Ring",
-		"itemValue": 987,
-		"itemIcon": itemImages[0]
+		"itemName": "Orange Armor",
+		"itemValue": 1300,
+		"itemIcon": itemImages[1]
+	},
+	3: {
+		"itemName": "Shoes",
+		"itemValue": 250,
+		"itemIcon": itemImages[3]
+	},
+	4: {
+		"itemName": "White Armor",
+		"itemValue": 1500,
+		"itemIcon": itemImages[2]
+	},
+	5: {
+		"itemName": "White Helm",
+		"itemValue": 1000,
+		"itemIcon": itemImages[4]
+	},
+	6: {
+		"itemName": "Wooden Shield",
+		"itemValue": 500,
+		"itemIcon": itemImages[5]
+	},
+	7: {
+		"itemName": "Health Potion",
+		"itemValue": 450,
+		"itemIcon": itemImages[6]
 	},
 };
 
@@ -49,9 +74,11 @@ func _ready():
 		slotList.append(slot);
 		add_child(slot);
 	
+	# Default items
 	slotList[0].setItem(itemList[0]);
 	slotList[1].setItem(itemList[1]);
 	slotList[2].setItem(itemList[2]);
+	slotList[3].setItem(itemList[3]);
 	
 	pass
 
