@@ -2,6 +2,8 @@
 
 Simple inventory system using GDScript.
 
+Press "W" to open and close the inventory while in-game
+
 # Preview
 ![Inventory](https://i.imgur.com/S82hLbf.gif)
 
