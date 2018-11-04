@@ -15,7 +15,7 @@ func _ready():
 	get_tree().connect('network_peer_connected', self, '_on_player_connected')
 
 func create_server(player_nickname):
-	print("creating server...")
+	print("creating server... " + player_nickname)
 	self_data.name = player_nickname
 	players[1] = self_data
 	var peer = NetworkedMultiplayerENet.new()
@@ -23,12 +23,12 @@ func create_server(player_nickname):
 	get_tree().set_network_peer(peer)
 	print("server created!")
 
-func connect_to_server(player_nickname):
+func connect_to_server(player_nickname, ip):
 	print("connecting to server...")
 	self_data.name = player_nickname
 	get_tree().connect('connected_to_server', self, '_connected_to_server')
 	var peer = NetworkedMultiplayerENet.new()
-	peer.create_client(DEFAULT_IP, DEFAULT_PORT)
+	peer.create_client(ip, DEFAULT_PORT)
 	get_tree().set_network_peer(peer)
 	print("finished connecting to server!")
 
@@ -59,11 +59,13 @@ remote func _request_players(request_from_id):
 remote func _send_player_info(id, info):
 	players[id] = info
 	var new_player = load('res://Player.tscn').instance()
+	
 	new_player.name = str(id)
 	new_player.set_network_master(id)
-	$'/root/Game/'.add_child(new_player)
+	new_player.get_node("usernameLabel").set_text(info.name)
+	$'/root/Game/dungeon/walls'.add_child(new_player)
+	
 	new_player.init(info.name, info.position, true)
 
 func update_position(id, position):
 	players[id].position = position
-	

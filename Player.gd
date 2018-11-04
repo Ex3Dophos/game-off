@@ -30,7 +30,7 @@ func _input(event):
 		get_tree().change_scene("res://Inventory.tscn")
 
 func _physics_process(delta):
-		
+
 	var velocity = Vector2()
 	var mouse_position = get_global_mouse_position()
 	var player_position = get_position()
@@ -39,7 +39,7 @@ func _physics_process(delta):
 	var reposition = Vector2()
 	reposition.x = destination.x - player_position.x
 	reposition.y = destination.y - player_position.y
-	
+
 	var direction = MoveDirection.NONE#MoveDirection.NONE
 	if is_network_master():
 #		if int(round(reposition.x)) != 0 || int(round(reposition.y)) != 0:
@@ -48,29 +48,29 @@ func _physics_process(delta):
 #            print ("reposition ", reposition)
 		if Input.is_mouse_button_pressed(BUTTON_LEFT):
 			destination = mouse_position
-           
+
 		var player_distance = player_position.distance_to(destination)
-		if player_distance < 2.0:  
+		if player_distance < 2.0:
 			player_position = destination
 		else:
 			velocity = reposition
-#		if player_position != get_position(): 
+#		if player_position != get_position():
 #			set_position(player_position.linear_interpolate(destination,delta))
-		
+
 		rset_unreliable('slave_position', position)
 		rset('slave_movement', velocity)
 		_move(velocity)
 	else:
 		_move(slave_movement)
 		position = slave_position
-	
+
 	if get_tree().is_network_server():
 		Network.update_position(int(name), position)
-	
-	
-	
-	
-	
+
+
+
+
+
 func _move(direction):
 	match direction:
 		MoveDirection.NONE:
