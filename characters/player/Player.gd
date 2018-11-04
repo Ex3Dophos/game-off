@@ -20,9 +20,9 @@ func init(nickname, start_position, is_slave):
 	#$GUI/Nickname.text = nickname
 	#global_position = start_position
 	if is_slave:
-		$Sprite.texture = load('res://troll2.png')
+		$Sprite.texture = load('res://characters/player/sprites/troll2.png')
 	else:
-		inventory = preload('res://Inventory.tscn').instance()
+		inventory = preload('res://characters/player/ui/inventory/Inventory.tscn').instance()
 
 
 func _input(event):

@@ -58,7 +58,7 @@ remote func _request_players(request_from_id):
 
 remote func _send_player_info(id, info):
 	players[id] = info
-	var new_player = load('res://Player.tscn').instance()
+	var new_player = load('res://characters/player/Player.tscn').instance()
 	
 	new_player.name = str(id)
 	new_player.set_network_master(id)

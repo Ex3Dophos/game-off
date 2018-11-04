@@ -6,7 +6,7 @@ var item = null;
 func _init(slotIndex):
 	self.slotIndex = slotIndex;
 	name = "ItemSlot_%d" % slotIndex
-	texture = preload("res://images/skil.png");
+	texture = preload("res://characters/player/ui/inventory/sprites/skil.png");
 	mouse_filter = Control.MOUSE_FILTER_PASS;
 	mouse_default_cursor_shape = Control.CURSOR_POINTING_HAND;
 	pass

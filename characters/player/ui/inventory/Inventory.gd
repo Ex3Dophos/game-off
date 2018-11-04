@@ -1,17 +1,17 @@
 extends GridContainer;
 const ItemClass = preload("Item.gd");
-const ItemSlotClass = preload("res://ItemSlot.gd");
+const ItemSlotClass = preload("res://characters/player/ui/inventory/ItemSlot.gd");
 
-const slotTexture = preload("res://images/skil.png");
+const slotTexture = preload("res://characters/player/ui/inventory/sprites/skil.png");
 const itemImages = [
-	preload("res://images/Ac_Ring05.png"),
-	preload("res://images/A_Armor05.png"),
-	preload("res://images/A_Armour02.png"),
-	preload("res://images/A_Shoes03.png"),
-	preload("res://images/C_Elm03.png"),
-	preload("res://images/E_Wood02.png"),
-	preload("res://images/P_Red02.png"),
-	preload("res://images/W_Sword001.png")
+	preload("res://characters/player/ui/inventory/sprites/Ac_Ring05.png"),
+	preload("res://characters/player/ui/inventory/sprites/A_Armor05.png"),
+	preload("res://characters/player/ui/inventory/sprites/A_Armour02.png"),
+	preload("res://characters/player/ui/inventory/sprites/A_Shoes03.png"),
+	preload("res://characters/player/ui/inventory/sprites/C_Elm03.png"),
+	preload("res://characters/player/ui/inventory/sprites/E_Wood02.png"),
+	preload("res://characters/player/ui/inventory/sprites/P_Red02.png"),
+	preload("res://characters/player/ui/inventory/sprites/W_Sword001.png")
 ];
 
 const itemDictionary = {

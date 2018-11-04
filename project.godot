@@ -16,7 +16,7 @@ config/icon="res://icon.png"
 
 [autoload]
 
-Network="*res://Network.gd"
+Network="*res://networking/Network.gd"
 
 [gdnative]
 
