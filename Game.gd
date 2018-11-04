@@ -9,24 +9,23 @@ func _ready():
 	
 	add_child(new_dungeon)
 	
-	print('oh no')
 	new_player.set_network_master(get_tree().get_network_unique_id())
+	
 	new_player.name = str(get_tree().get_network_unique_id())
 	
-	#new_dungeon.add_child(new_player)
-	print("yes?")
+	
 	new_dungeon.get_node("walls").add_child(new_player)
-	print("ohhh")
-	#new_dungeon.add_child(new_player)
-	#getchild(new_dungeon).add_child(new_player)
-	#add_child(new_player)
+
 	var info = Network.self_data
 	new_player.init(info.name, info.position, false)
+	new_player.get_node("usernameLabel").set_text(info.name)
 	
-	#var camera = Camera2D().new()
-
+	var camera = Camera2D.new()
+	new_player.add_child(camera)
+	camera.make_current() 
+	
 func _on_player_disconnected(id):
 	get_node(str(id)).queue_free()
-
+	
 func _on_server_disconnected():
 	get_tree().change_scene('res://MainScreen.tscn')

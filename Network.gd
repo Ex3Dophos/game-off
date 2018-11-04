@@ -64,6 +64,7 @@ remote func _send_player_info(id, info):
 	
 	new_player.name = str(id)
 	new_player.set_network_master(id)
+	new_player.get_node("usernameLabel").set_text(info.name)
 	$'/root/Game/dungeon/walls'.add_child(new_player)
 	
 	new_player.init(info.name, info.position, true)
