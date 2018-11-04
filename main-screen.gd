@@ -7,6 +7,7 @@ extends Label
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
+	set_process_input(true)
 	pass
 
 #func _process(delta):
@@ -15,12 +16,5 @@ func _ready():
 #	pass
 
 func _input(event):
-   # Mouse in viewport coordinates
-   if event is InputEventMouseButton:
-      get_tree().change_scene("res://dungeon.tscn")
-      # print("Mouse Click/Unclick at: ", event.position)
-   #elif event is InputEventMouseMotion:
-       #print("Mouse Motion at: ", event.position)
-
-   # Print the size of the viewport
-   #print("Viewport Resolution is: ", get_viewport_rect().size)
+	if event is InputEventMouseButton:
+		get_tree().change_scene("res://dungeon.tscn")

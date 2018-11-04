@@ -50,6 +50,6 @@ _sections_unfolded = [ "Cell" ]
 
 [node name="troll" parent="walls" index="0" instance=ExtResource( 2 )]
 
-position = Vector2( 368.142, 347.007 )
+position = Vector2( 523.26, 303.277 )
 
 

@@ -12,16 +12,11 @@ const SMOOTH_SPEED = 160
 
 
 func _input(event):
-    if event is InputEventMouseButton:
-        if event.pressed:
-	        print("Mouse Click/Unclick at: ", event.position)
-#            #var projectile = preload("res://projectile.tscn").instance()
-#            #get_parent().add_child(projectile)
-#            #projectile.shoot_at_mouse(self.global_position)
-			
-#	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
-#		$Tween.interpolate_property($sprite, "transform/pos",$sprite.global_position, get_global_mouse_position(), 1,Tween.TRANS_LINEAR,Tween.EASE_IN)
-#		$Tween.start()
+	if event is InputEventMouseButton:
+		if event.pressed:
+			print("Mouse Click/Unclick at: ", event.position)
+	if Input.is_key_pressed(KEY_W):
+		get_tree().change_scene("res://Inventory.tscn")
 
 			
 func _physics_process(delta):

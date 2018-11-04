@@ -58,6 +58,8 @@ func _ready():
 func _input(event):
 	if holdingItem != null && holdingItem.picked:
 		holdingItem.rect_global_position = Vector2(event.position.x, event.position.y);
+	if Input.is_key_pressed(KEY_W):
+		get_tree().change_scene("res://dungeon.tscn")
 
 func _gui_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
