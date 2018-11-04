@@ -14,7 +14,7 @@ func _on_joinGameButton_pressed():
 	
 	if userName == "":
 		return
-	Network.connect_to_server(userName)
+	Network.connect_to_server(userName, ip)
 	get_tree().change_scene("res://Game.tscn")
 
 func _on_ipLineEdit_text_changed(new_text):

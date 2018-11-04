@@ -8,13 +8,22 @@ func _ready():
 	var new_dungeon = preload('res://dungeon.tscn').instance()
 	
 	add_child(new_dungeon)
-	new_dungeon.get_node("walls").add_child(new_player)
 	
-	new_player.name = str(get_tree().get_network_unique_id())
+	print('oh no')
 	new_player.set_network_master(get_tree().get_network_unique_id())
+	new_player.name = str(get_tree().get_network_unique_id())
 	
+	#new_dungeon.add_child(new_player)
+	print("yes?")
+	new_dungeon.get_node("walls").add_child(new_player)
+	print("ohhh")
+	#new_dungeon.add_child(new_player)
+	#getchild(new_dungeon).add_child(new_player)
+	#add_child(new_player)
 	var info = Network.self_data
 	new_player.init(info.name, info.position, false)
+	
+	#var camera = Camera2D().new()
 
 func _on_player_disconnected(id):
 	get_node(str(id)).queue_free()

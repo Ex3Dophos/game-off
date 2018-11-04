@@ -50,9 +50,9 @@ func _physics_process(delta):
 			direction = MoveDirection.RIGHT
 	#	if Input.is_action_pressed("left_click"): #made an input map for left_click
 	# 		motion = ( - position)
-		if Input.is_mouse_button_pressed(BUTTON_LEFT):
-			TweenNode.interpolate_property(self, "position",self.global_position, mouse_position, 1.0,Tween.TRANS_LINEAR,Tween.EASE_IN)
-			TweenNode.start()
+		#if Input.is_mouse_button_pressed(BUTTON_LEFT):
+			#TweenNode.interpolate_property(self, "position",self.global_position, mouse_position, 1.0,Tween.TRANS_LINEAR,Tween.EASE_IN)
+			#TweenNode.start()
 		
 		
 		

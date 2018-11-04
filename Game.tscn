@@ -5,6 +5,5 @@
 [node name="Game" type="Node"]
 
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause" ]
 
 
