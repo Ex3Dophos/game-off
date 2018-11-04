@@ -66,3 +66,4 @@ remote func _send_player_info(id, info):
 
 func update_position(id, position):
 	players[id].position = position
+	
