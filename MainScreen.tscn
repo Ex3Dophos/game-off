@@ -2,7 +2,7 @@
 
 [ext_resource path="res://MainScreen.gd" type="Script" id=1]
 
-[node name="mainScreen" type="Node"]
+[node name="mainScreen" type="Node" index="0"]
 
 script = ExtResource( 1 )
 

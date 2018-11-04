@@ -17,7 +17,7 @@ func init(nickname, start_position, is_slave):
 	#$GUI/Nickname.text = nickname
 	#global_position = start_position
 	if is_slave:
-		$Sprite.texture = load('res://troll.png')
+		$Sprite.texture = load('res://troll2.png')
 
 
 func _input(event):
