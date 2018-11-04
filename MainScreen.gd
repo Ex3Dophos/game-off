@@ -7,7 +7,7 @@ func _on_startGameButton_pressed():
 	if userName == "":
 		return
 	Network.create_server(userName)
-	get_tree().change_scene("res://dungeon.tscn")
+	get_tree().change_scene("res://Game.tscn")
 
 func _on_joinGameButton_pressed():
 	print("ip: " + ip + " user: " + userName)
