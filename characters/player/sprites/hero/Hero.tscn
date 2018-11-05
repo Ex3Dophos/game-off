@@ -994,12 +994,10 @@ tracks/0/keys = {
 
 [node name="Hero" type="Sprite" index="0"]
 
-position = Vector2( 189.465, 285.419 )
 texture = ExtResource( 1 )
 vframes = 8
 hframes = 32
-frame = 1
-_sections_unfolded = [ "Animation", "Region" ]
+_sections_unfolded = [ "Animation", "Region", "Transform" ]
 
 [node name="Animation" type="AnimationPlayer" parent="." index="0"]
 

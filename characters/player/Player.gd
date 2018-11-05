@@ -16,13 +16,14 @@ var inventory = null
 
 
 func init(nickname, start_position, is_slave):
-	print("lol")
-	#$GUI/Nickname.text = nickname
-	#global_position = start_position
 	if is_slave:
 		$Sprite.texture = load('res://characters/player/sprites/troll2.png')
 	else:
 		inventory = preload('res://characters/player/ui/inventory/Inventory.tscn').instance()
+		var hero = preload('res://characters/player/sprites/hero/Hero.tscn').instance()
+		add_child(hero)
+		$Sprite.texture = get_node('Hero')
+		get_node('Hero').get_node('Animation').play('Stance W')
 
 
 func _input(event):
