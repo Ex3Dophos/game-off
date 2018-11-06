@@ -3,15 +3,12 @@
 [ext_resource path="res://characters/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://characters/player/sprites/troll.png" type="Texture" id=2]
 
-
-
-
 [sub_resource type="CircleShape2D" id=1]
 
 custom_solver_bias = 0.0
 radius = 16.0
 
-[node name="troll" type="KinematicBody2D" index="0"]
+[node name="troll" type="KinematicBody2D"]
 
 input_pickable = false
 collision_layer = 1
