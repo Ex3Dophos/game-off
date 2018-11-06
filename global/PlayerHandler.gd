@@ -11,7 +11,7 @@ func createPlayer(playerName, type, id, camera):
 		player = load('res://characters/player/sprites/hero/Hero.tscn').instance()
 #		$Sprite.texture = load('res://characters/player/sprites/troll.png')
 	if type == 2:
-		player = load('res://characters/player/sprites/hero/Hero.tscn').instance()
+		player = load('res://characters/player/sprites/skeleton/Skeleton.tscn').instance()
 #		$Sprite.texture = load('res://characters/player/sprites/troll2.png')
 	
 	

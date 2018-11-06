@@ -998,7 +998,7 @@ tracks/0/keys = {
 "values": [ 0, 3 ]
 }
 
-[node name="Hero" type="KinematicBody2D" index="0"]
+[node name="Hero" type="KinematicBody2D"]
 
 position = Vector2( -1.63172, -0.156896 )
 input_pickable = false
@@ -1019,7 +1019,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 2 )
 vframes = 8
 hframes = 32
-frame = 167
+frame = 193
 _sections_unfolded = [ "Animation" ]
 
 [node name="Animation" type="AnimationPlayer" parent="Sprite" index="0"]
