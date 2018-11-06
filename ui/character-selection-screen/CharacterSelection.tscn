@@ -1984,7 +1984,7 @@ tracks/0/keys = {
 "values": [ 0, 3 ]
 }
 
-[node name="CharacterSelection" type="Node" index="0"]
+[node name="CharacterSelection" type="Node"]
 
 script = ExtResource( 1 )
 
@@ -2013,6 +2013,7 @@ _sections_unfolded = [ "Rect" ]
 
 [node name="noShirtContainer" type="Container" parent="." index="1"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -2030,6 +2031,7 @@ size_flags_vertical = 1
 
 [node name="Hero" type="Sprite" parent="noShirtContainer" index="0"]
 
+editor/display_folded = true
 position = Vector2( 119.144, 86.1902 )
 texture = ExtResource( 2 )
 vframes = 8
@@ -2130,6 +2132,7 @@ align = 1
 
 [node name="shirtContainer" type="Container" parent="." index="2"]
 
+editor/display_folded = true
 anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 0.0
@@ -2172,6 +2175,7 @@ align = 1
 
 [node name="Skeleton" type="Sprite" parent="shirtContainer" index="1"]
 
+editor/display_folded = true
 position = Vector2( 125.309, 84.1767 )
 texture = ExtResource( 3 )
 vframes = 8
