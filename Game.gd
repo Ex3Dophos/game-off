@@ -5,7 +5,7 @@ func _ready():
 	get_tree().connect('server_disconnected', self, '_on_server_disconnected')
 	
 	createLevel()
-	PlayerHandler.createPlayer(str(get_tree().get_network_unique_id()), PlayerInformation.userType, (get_tree().get_network_unique_id()), true)
+	PlayerHandler.createPlayer(str(get_tree().get_network_unique_id()), PlayerInformation.userType, get_tree().get_network_unique_id(), true)
 	Network.sendConnectedToOtherPlayers(int(Network.self_data.name))
 	Network._request_players(int(Network.self_data.name))
 	
