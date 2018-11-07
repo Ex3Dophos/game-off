@@ -22,11 +22,24 @@ func createPlayer(playerName, type, id, camera):
 	
 	var info = Network.self_data
 	player.init(info.name, info.position, false)
-#	player.get_node("usernameLabel").set_text(info.name)
+	#player
+	#player.get_parent().get_child("usernameLabel").set_text(info.name)
+	getallnodes(player)#player)
+	#print(player.get_parent())
+	#player.get_parent(
 	
 	if (camera):
 		setCamera(player)
-	
+		
+func getallnodes(node):
+    for N in node.get_children():
+        if N.get_child_count() > 0:
+            print("["+N.get_name()+"]")
+            getallnodes(N)
+        else:
+            # Do something
+            print("- "+N.get_name())
+
 func setCamera(player):
 	var camera = Camera2D.new()
 	player.add_child(camera)

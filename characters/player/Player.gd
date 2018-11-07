@@ -62,6 +62,7 @@ func _physics_process(delta):
 #			set_position(player_position.linear_interpolate(destination,delta))
 		var current_velocity = get_position() - prev_position
 		
+		#Network.sendPositionAndVelocity(position, velocity)
 		rset_unreliable('slave_position', position)
 		rset('slave_movement', velocity)
 		_animate(current_velocity, prev_velocity)
