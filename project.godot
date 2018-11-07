@@ -20,6 +20,7 @@ Network="*res://networking/Network.gd"
 ClientInformation="*res://global/ClientInformation.gd"
 PlayerInformation="*res://global/PlayerInformation.gd"
 PlayerHandler="*res://global/PlayerHandler.gd"
+Util="*res://global/Util.gd"
 
 [gdnative]
 
