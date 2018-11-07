@@ -76,15 +76,6 @@ func disconnectFromServer():
 	multiplayerServer.close_connection()
 	players.clear()
 			
-func update_position(id, position):
-	print("here??")
-	players[id].position = position
-	
-func sendPositionAndVelocity(position, velocity):
-	rset_unreliable('slave_position', position)
-	rset('slave_movement', velocity)
-	
-			
 remote func sendConnectionToOtherPlayers(id, type, info):
 	PlayerHandler.createPlayer(str(id), type, id, false)
 	
