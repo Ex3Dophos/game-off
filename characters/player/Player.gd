@@ -29,8 +29,10 @@ func _input(event):
 	if is_network_master():
 		if Input.is_key_pressed(KEY_W):
 			if has_node("PlayerInventory"):
+				set_physics_process(true)
 				remove_child(inventory)
 			else:
+				set_physics_process(false)
 				add_child(inventory)
 			
 
