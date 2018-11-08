@@ -84,7 +84,8 @@ func _ready():
 
 func _input(event):
 	if holdingItem != null && holdingItem.picked:
-		holdingItem.rect_global_position = Vector2(event.position.x, event.position.y);
+		var mousePos = get_global_mouse_position()
+		holdingItem.rect_global_position = Vector2(mousePos.x, mousePos.y);
 
 func _gui_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT and event.pressed:
