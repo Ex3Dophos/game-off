@@ -3,7 +3,7 @@ extends Node
 var username = ""
 var userType = ""
 
-func createPlayer(playerName, type, id, camera):
+func createPlayer(playerName, type, id, position, camera):
 	print("Player " + playerName + " is being created.")
 	
 	var player
@@ -19,7 +19,7 @@ func createPlayer(playerName, type, id, camera):
 	$'/root/Game/dungeon/walls'.add_child(player)
 	
 	var info = Network.self_data
-	player.init(info.name, info.position, false)
+	player.init(info.name, position, false)
 
 	if (camera):
 		setCamera(player)

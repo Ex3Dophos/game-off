@@ -17,76 +17,53 @@ var prev_velocity = Vector2()
 var is_moving = false
 var facing_direction = "down"
 
-
-
-func init(nickname, type, start_position, is_slave):
-	#$GUI/Nickname.text = nickname
-	#global_position = start_position
+func init(nickname, start_position, is_slave):
+	destination = start_position
+	set_position(start_position)
+	
 	if !is_slave:
 		inventory = preload('res://characters/player/ui/inventory/Inventory.tscn').instance()
-
+		#$'Sprite/Animation'.play('Stance E')
+	
 func _input(event):
 	if is_network_master():
+		if Input.is_mouse_button_pressed(BUTTON_LEFT):
+			destination = get_global_mouse_position()
+			Network.sendMovement(get_global_mouse_position())
+			PlayerInformation.setPlayerPosition(get_global_mouse_position())
+		
 		if Input.is_key_pressed(KEY_W):
 			if has_node("PlayerInventory"):
 				remove_child(inventory)
 			else:
 				add_child(inventory)
 			
-
+func movePlayer(position):
+	destination = position
+	
 func _physics_process(delta):
-
 	var velocity = Vector2()
-	var mouse_position = get_global_mouse_position()
 	var player_position = get_position()
-
-#       var mbposition = get("position")
+	
 	var reposition = Vector2()
 	reposition.x = destination.x - player_position.x
 	reposition.y = destination.y - player_position.y
 
-	if is_network_master():
-#		if int(round(reposition.x)) != 0 || int(round(reposition.y)) != 0:
-#            print ("position ", position)
-#            print ("destination ", destination)
-#            print ("reposition ", reposition)
-		if Input.is_mouse_button_pressed(BUTTON_LEFT):
-			destination = mouse_position
-
-		var player_distance = player_position.distance_to(destination)
-		if player_distance < 2.0:
-			player_position = destination
-		else:
-			velocity = reposition
-#		if player_position != get_position():
-#			set_position(player_position.linear_interpolate(destination,delta))
-		var current_velocity = get_position() - prev_position
-		
-		#Network.sendPositionAndVelocity(position, velocity)
-		rset_unreliable('slave_position', position)
-		rset('slave_movement', velocity)
-		_animate(current_velocity, prev_velocity)
-		prev_position = get_position()
-		prev_velocity = current_velocity
-		_move(velocity)
+	var player_distance = player_position.distance_to(destination)
+	if player_distance < 2.0:
+		player_position = destination
 	else:
-		var slave_current_velocity = slave_position - slave_prev_position
-		_animate(slave_current_velocity, slave_prev_velocity)	
-		slave_prev_position = slave_position
-		slave_prev_velocity = slave_current_velocity
+		velocity = reposition
 		
-		position = slave_position
-
-
-#		_move(slave_position)
-
-	#if get_tree().is_network_server():
-	#	Network.update_position(int(name), position)
-
+	var current_velocity = get_position() - prev_position
+	
+	_animate(current_velocity, prev_velocity)
+	prev_position = get_position()
+	prev_velocity = current_velocity
+	_move(velocity)
 
 func _animate(current_velocity, prev_velocity):
 	pass
-
 
 func direction2str(direction):
 	var angle = direction.angle()
@@ -96,7 +73,6 @@ func direction2str(direction):
 	if index > 7:
 		index = int(index) % 8
 	return move_directions[index]
-
 
 func _move(direction):
 	direction = direction.normalized() * MOTION_SPEED
