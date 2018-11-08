@@ -1,10 +1,5 @@
 extends "res://characters/player/Player.gd"
 
-func init(nickname, start_position, is_slave):
-	if !is_slave:
-		inventory = preload('res://characters/player/ui/inventory/Inventory.tscn').instance()
-		$'Sprite/Animation'.play('Stance W')
-		
 func _ready():
 	pass
  

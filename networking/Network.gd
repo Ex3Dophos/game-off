@@ -16,20 +16,21 @@ func _ready():
 	get_tree().connect('network_peer_connected', self, 'playerConnectedToServer')
 	get_tree().connect('network_peer_disconnected', self, 'playerDisconnectedFromServer')
 	get_tree().connect('server_disconnected', self, 'serverConnectionLost')
+	get_tree().connect('connected_to_server', self, 'connectionToServerSucceeded')
+	get_tree().connect('connection_failed',self, 'connectionToServerFailed')
 
 func create_server(player_nickname):
 	self_data.name = player_nickname
 	players[1] = self_data
+	
 	multiplayerServer = NetworkedMultiplayerENet.new()
 	multiplayerServer.create_server(DEFAULT_PORT, MAX_PLAYERS)
 	get_tree().set_network_peer(multiplayerServer)
+	
 	print("Server is listening on port: " + str(DEFAULT_PORT))
 
 func connect_to_server(player_nickname, ip):
 	self_data.name = player_nickname
-	
-	get_tree().connect('connected_to_server', self, 'connectionToServerSucceeded')
-	get_tree().connect('connection_failed',self, 'connectionToServerFailed')
 	
 	multiplayerServer = NetworkedMultiplayerENet.new()
 	multiplayerServer.create_client(ip, DEFAULT_PORT)
@@ -64,31 +65,40 @@ func sendConnectedToOtherPlayers():
 	var local_player_id = get_tree().get_network_unique_id()
 	players[local_player_id] = self_data
 	
-	rpc_id(int(self_data.name), "sendConnectionToOtherPlayers", local_player_id, PlayerInformation.userType, self_data)
+	rpc_id(int(self_data.name), "sendConnectionToOtherPlayers", local_player_id, PlayerInformation.userType, PlayerInformation.position, self_data)
 	
 func requestConnectedPlayerInformation():
 	for peer_id in players:
 		if( peer_id != get_tree().get_network_unique_id()):
-			rpc_id(peer_id, 'sendCharacterType', int(self_data.name))
+			rpc_id(peer_id, 'sendCharacterDetails', int(self_data.name))
 			
 func disconnectFromServer():
 	print("Disconnected from server.")
 	multiplayerServer.close_connection()
 	players.clear()
+
+func sendMovement(mousePosition):
+	for peer_id in players:
+		if( peer_id != get_tree().get_network_unique_id()):
+			rpc_id(peer_id, "recieveMousePosition", get_tree().get_network_unique_id(), mousePosition)
+	
+remote func recieveMousePosition(id, mousePosition):
+		if not PlayerInformation.onCharacterSelection:
+			$'/root/Game/dungeon/walls'.get_child(Util.getIndexOfItemFromNode($'/root/Game/dungeon/walls', str(id))).movePlayer(mousePosition)
 			
-remote func sendConnectionToOtherPlayers(id, type, info):
-	PlayerHandler.createPlayer(str(id), type, id, false)
+remote func sendConnectionToOtherPlayers(id, type, position, info):
+	PlayerHandler.createPlayer(str(id), type, id, position, false)
 	
 remote func _request_player_info(request_from_id, player_id):
 	if get_tree().is_network_server():
 		rpc_id(request_from_id, '_send_player_info', player_id, players[player_id])
 		
-remote func sendCharacterType(id):
+remote func sendCharacterDetails(id):
 	if not PlayerInformation.onCharacterSelection:
-		rpc_id(id, "recieveCharacterType", get_tree().get_network_unique_id(), PlayerInformation.userType)
+		rpc_id(id, "recieveCharacterDetails", get_tree().get_network_unique_id(), PlayerInformation.userType, PlayerInformation.position)
 	
-remote func recieveCharacterType(id, type):
-	PlayerHandler.createPlayer(str(id), type, id, false)
+remote func recieveCharacterDetails(id, type, position):
+	PlayerHandler.createPlayer(str(id), type, id, position, false)
 	
 remote func _send_player_info(id, info):
 	players[id] = info
